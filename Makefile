@@ -18,7 +18,7 @@ imgproc: src/main.c $(LIB_OBJ)
 	$(CC) $(CFLAGS) -I$(IDIR) -c $< -o $@
 
 test: $(TEST_OBJ) $(LIB_OBJ)
-	$(CC) $(CFLAGS) -I$(IDIR) -o test_runner $^
+	$(CC) $(CFLAGS) -I$(IDIR) -o test_runner $^ -lm
 	./test_runner
 
 clean:

@@ -27,3 +27,17 @@ void image_free(Image *img) {
         free(img);
     }
 }
+
+Image *image_create(int width, int height, int channels) {
+    Image *img = (Image *)malloc(sizeof(Image));
+    if (!img) return NULL;
+    img->width = width;
+    img->height = height;
+    img->channels = channels;
+    img->data = (uint8_t *)calloc(width * height * channels, sizeof(uint8_t));
+    if (!img->data) {
+        free(img);
+        return NULL;
+    }
+    return img;
+}
