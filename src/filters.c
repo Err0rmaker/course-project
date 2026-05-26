@@ -11,15 +11,6 @@ static int compare_uint8(const void *a, const void *b) {
     return (*(uint8_t *)a - *(uint8_t *)b);
 }
 
-Image *image_create(int w, int h, int ch) {
-    Image *img = (Image *)malloc(sizeof(Image));
-    img->width = w;
-    img->height = h;
-    img->channels = ch;
-    img->data = (uint8_t *)calloc(w * h * ch, sizeof(uint8_t));
-    return img;
-}
-
 Image *image_median_filter(const Image *src, int kernel_size) {
     Image *dst = image_create(src->width, src->height, src->channels);
     int half = kernel_size / 2;

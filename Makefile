@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -std=c99 -Wall -O2 -lm
+CFLAGS = -std=c99 -Wall -O2
 IDIR = include
 LDIR = libs
 
@@ -12,13 +12,13 @@ TEST_OBJ = $(TEST_SRC:.c=.o)
 all: imgproc
 
 imgproc: src/main.c $(LIB_OBJ)
-	$(CC) $(CFLAGS) -I$(IDIR) -o $@ $^
+	$(CC) $(CFLAGS) -I$(IDIR) -o $@ $^ -lm
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I$(IDIR) -c $< -o $@
 
 test: $(TEST_OBJ) $(LIB_OBJ)
-	$(CC) $(CFLAGS) -I$(IDIR) -o test_runner $^
+	$(CC) $(CFLAGS) -I$(IDIR) -o test_runner $^ -lm
 	./test_runner
 
 clean:

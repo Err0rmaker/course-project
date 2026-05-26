@@ -11,6 +11,7 @@ typedef struct {
 } Image;
 
 Image *image_load(const char *filename);
+Image *image_create(int width, int height, int channels);
 int image_save(const Image *img, const char *filename);
 void image_free(Image *img);
 
